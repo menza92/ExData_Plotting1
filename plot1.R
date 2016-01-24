@@ -1,5 +1,4 @@
 require(data.table)
-library(data.table)
 #====================================================================
 # 2016-01-22,  A.C.Dennerley
 #====================================================================
@@ -12,5 +11,5 @@ data <- subset(allData, (Date=="1/2/2007" | Date=="2/2/2007") )
 png(filename="plot1.png",width=480,height=480,units="px")
 # Generate histogram.
 hist(as.numeric(data$Global_active_power),col="red",main="Global Active Power",xlab="Global Active Power (kiloWatts)")
-# Close the png
+# Close the png.
 dev.off()
