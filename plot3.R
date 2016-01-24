@@ -11,16 +11,21 @@ data <- subset(data, (Date=="1/2/2007" | Date=="2/2/2007") )
 # Add a column of date-times that are POSIX objects.
 data$fulltime <- strptime( paste(data$Date,data$Time,sep="-"), format="%d/%m/%Y-%T" )
 
-# Drawing the plot.
-my.ylab <- "Global Active Power (kiloWatts)"
-with( data, plot(fulltime,Global_active_power,type="l",ylab=my.ylab,xlab="") )
-
 # Create a png file to write to.
-png(filename="plot2.png",width=480,height=480,units="px")
+png(filename="plot3.png",width=480,height=480,units="px")
 
-# Generate the line plot.
-my.ylab <- "Global Active Power (kiloWatts)"
-with( data, plot(fulltime,Global_active_power,type="l",ylab=my.ylab,xlab="") )
+# Drawing the 1st data set to the plot.
+my.ylab <- "Energy sub metering"
+with( data, plot(fulltime,Sub_metering_1,type="l",ylab=my.ylab,xlab="") )
+# Drawing the 2nd and 3rd data sets to the plot
+with( data, points(fulltime,Sub_metering_2,type="l",col="red") )
+with( data, points(fulltime,Sub_metering_3,type="l",col="blue") )
+# Draw a descriptive legend.
+legend("topright",
+       c("Sub-metering 1","Sub-metering 2","Sub-metering 3"),
+       lty=c(1,1),
+       col=c("black","red","blue")
+)
 
 # Close the png.
 dev.off()
