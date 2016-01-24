@@ -11,10 +11,6 @@ data <- subset(data, (Date=="1/2/2007" | Date=="2/2/2007") )
 # Add a column of date-times that are POSIX objects.
 data$fulltime <- strptime( paste(data$Date,data$Time,sep="-"), format="%d/%m/%Y-%T" )
 
-# Drawing the plot.
-my.ylab <- "Global Active Power (kiloWatts)"
-with( data, plot(fulltime,Global_active_power,type="l",ylab=my.ylab,xlab="") )
-
 # Create a png file to write to.
 png(filename="plot2.png",width=480,height=480,units="px")
 
